@@ -1,0 +1,23 @@
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Kullanıcı</th>
+        <th scope="col">Marka</th>
+        <th scope="col">Rengi</th>
+        <th scope="col">Verilen Tarih</th>
+        <th scope="col">Geri Getirilmesi Gereken Tarih</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rental of rentals">
+        <th scope="row">{{ rental.Id }}</th>
+        <th scope="row">{{ rental.userName }}</th>
+        <th scope="row">{{ rental.brandName }}</th>
+        <th scope="row">{{ rental.colorName }}</th>
+        <th scope="row">{{ rental.returnDate }}</th>
+        <td>{{ rental.returnDate }}</td>
+      </tr>
+    </tbody>
+</table>

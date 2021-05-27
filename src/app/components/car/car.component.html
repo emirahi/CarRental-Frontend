@@ -1,0 +1,19 @@
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Car Brand Name</th>
+        <th scope="col">Car Color Name</th>
+        <th scope="col">Car Model Year</th>
+        <th scope="col">Car Daily Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of carsDto">
+        <th scope="row">{{ car.brandName }}</th>
+        <th scope="row">{{ car.colorName }}</th>
+        <th scope="row">{{ car.modelYear }}</th>
+        <th scope="row">{{ car.dailyPrice }}</th>
+      </tr>
+    </tbody>
+</table>

@@ -1,0 +1,43 @@
+
+src -> app -> companents = {
+    Komut : {
+        ng g component component_name
+    }
+
+    Açıklama : {
+        sayfa içindeki companentlerimizi bulundurduğum klasördür.
+    }
+}
+
+src -> app -> directives {
+    angular içerisinde oluşturmuş olduğum directivleri bu klasörde tutacağım.
+
+    angular build-in directives {
+        *ngfor = template içerisinde bulunan datayı for döngüsü yarımıyla kullanmayı sağlar.
+    }
+}
+
+src -> app -> models {
+    Komut : {
+        ng g interface model_name
+    }
+    Açıklama : {
+        Backend tarafındaki modellerimi oluşturduğumuz bölümdür.
+    }
+}
+
+
+src -> app -> services {
+    Komut : {
+        ng g service
+    }
+    Açıklama : {
+        Backenden tarafındaki modellerimin Servicelerini yazıdığım bölümdür.
+        
+        Service {
+            Bir modelin frontend tarafında yapacağı tüm kodlar burada bulunur.
+            Companent tarafında ise artık sunum yapılmak üzere kullanılır.
+        }
+    }
+}
+

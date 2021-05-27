@@ -1,0 +1,15 @@
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Brand Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let brand of brands">
+        <th scope="row">{{ brand.brandId }}</th>
+        <td>{{ brand.brandName }}</td>
+      </tr>
+    </tbody>
+</table>
