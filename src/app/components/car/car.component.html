@@ -1,19 +1,68 @@
+<div class="row" [hidden]="isHidden">
+  <div class="col-6">
+    <app-brand></app-brand>
+  </div>
+  <div class="col-6">
+    <app-color></app-color>
+  </div>
+  <button type="submit" (click)="searchTheCar()" class="btn btn-success" id="search">Ara</button>
+</div>
 
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Car Brand Name</th>
-        <th scope="col">Car Color Name</th>
-        <th scope="col">Car Model Year</th>
-        <th scope="col">Car Daily Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let car of carsDto">
-        <th scope="row">{{ car.brandName }}</th>
-        <th scope="row">{{ car.colorName }}</th>
-        <th scope="row">{{ car.modelYear }}</th>
-        <th scope="row">{{ car.dailyPrice }}</th>
-      </tr>
-    </tbody>
+
+<table class="table" [hidden]="isHidden">
+  <thead>
+    <tr>
+      <th scope="col">Arabanın Markası</th>
+      <th scope="col">Arabanın Rengi</th>
+      <th scope="col">Arabanın Model Tarihi</th>
+      <th scope="col">Arabının Fiyatı</th>
+      <th scope="col">Arabanın Açıklaması</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let car of carsDto">
+      <th scope="row">{{ car.brandName }}</th>
+      <th scope="row">{{ car.colorName }}</th>
+      <th scope="row">{{ car.modelYear }}</th>
+      <th scope="row">{{ car.dailyPrice }}</th>
+      <th scope="row">{{ car.descriptions }}</th>
+      <th>
+        <a href="CarDetail/{{ car.id }}" class="btn btn-success">Aracın Detalarına Git</a>
+      </th>
+    </tr>
+  </tbody>
 </table>
+
+
+<div class="row mt-3" [hidden]="!isHidden">
+  <div class="col-6">
+    <!-- <img src="assets/alfa-romeo-gıula1.jpg"> -->
+    <img [src]="imageUrl" alt="">
+  </div>
+  <div class="col-6">
+    <h2 style="text-align: center;">Araç Bilgileri</h2>
+    <div >
+      <h4>Marka : </h4>
+      <p>{{ carDetail.brandName }}</p>
+      <hr>
+
+      <h4>Rengi : </h4>
+      <p>{{ carDetail.colorName }}</p>
+      <hr>
+
+      <h4>Model Yılı : </h4>
+      <p>{{ carDetail.modelYear }}</p>
+      <hr>
+
+      <h4>Fiyatı : </h4>
+      <p>{{ carDetail.dailyPrice }}</p>
+      <hr>
+
+      <h4>Açıklama : </h4>
+      <p>{{ carDetail.descriptions }}</p>
+
+    </div>
+
+
+  </div>
+</div>

@@ -1,9 +1,9 @@
 
 export interface CarDto {
-    Id:number;
+    id:number;
     brandName:string;
     colorName:string;
     modelYear:number;
     dailyPrice:number;
-    description:string;
+    descriptions:string;
 }

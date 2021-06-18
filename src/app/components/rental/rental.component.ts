@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { RentalDto } from 'src/app/models/Dto/rentadto';
-import { Rental } from 'src/app/models/Entity/rental';
 import { RentalService } from 'src/app/services/rental.service';
 
+@Injectable({
+  providedIn:"root"
+})
 @Component({
   selector: 'app-rental',
   templateUrl: './rental.component.html',

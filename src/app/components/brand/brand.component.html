@@ -1,15 +1,7 @@
 
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Brand Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let brand of brands">
-        <th scope="row">{{ brand.brandId }}</th>
-        <td>{{ brand.brandName }}</td>
-      </tr>
-    </tbody>
-</table>
+<label class="form-label" for="cars">Arabanın Markası</label>
+<br>
+<select class="form-control" name="brands" id="brands">
+  <option  (click)="setCurrentBrandNull()" value="0  ">Hepsi</option>
+  <option *ngFor="let brand of brands" (click)="setCurrentBrand(brand)" class="form-control" value="{{ brand.brandId }}">{{ brand.brandName }}</option>
+</select>

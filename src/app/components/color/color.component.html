@@ -1,0 +1,9 @@
+
+<label class="form-label" for="cars">Arabanın Rengi</label>
+<br>
+<select class="form-control" name="colors" id="colors">
+    <option (click)="setCurrentColorNull()" class="form-control" value="0">Hepsi</option>
+    <option *ngFor="let color of colors" (click)="setCurrentColor(color)" 
+    class="form-control" value="{{ color.colorId }}">{{ color.colorName }}</option>
+</select>
+
