@@ -23,6 +23,8 @@ export class RentalComponent implements OnInit {
   getAll() {
     this.rentalService.getAll().subscribe(rental => {
       this.rentals = rental.data;
+      console.log(rental.data);
+      
     })
   }
 

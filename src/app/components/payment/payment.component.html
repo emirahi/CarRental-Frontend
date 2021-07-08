@@ -1,0 +1,33 @@
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8 mt-4">
+        <div class="left border">
+            <div class="row"> <span class="header">Payment</span>
+                <div class="icons">
+                    <img src="https://img.icons8.com/color/48/000000/visa.png" />
+                    <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png" />
+                    <img src="https://img.icons8.com/color/48/000000/maestro.png" />
+                </div>
+            </div>
+            <form>
+                <span>Cardholder's name:</span>
+                <input [(ngModel)]="cardName" name="cardName" type="text" placeholder="Linda Williams">
+                <span>Card Number:</span>
+                <input [(ngModel)]="cardNumber" name="cardNumber" type="text" placeholder="0125 6780 4567 9909">
+                <div class="row">
+                    <div class="col-4">
+                        <span>Expiry date:</span>
+                        <input [(ngModel)]="cardExp" name="cardExp" placeholder="YY/MM">
+                    </div>
+                    <div class="col-4">
+                        <span>CVV:</span>
+                        <input [(ngModel)]="cardCvv" name="cvv">
+                    </div>
+                </div> 
+                <input (click)="validPayment()" type="submit" class="btn btn-success" value="Siparişi Onayla">
+            </form>
+        </div>
+    </div>
+    <div class="col-2"></div>
+</div>

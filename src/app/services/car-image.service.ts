@@ -9,7 +9,7 @@ import { ListResponseModel } from '../models/responeModel/listResponseModel';
 })
 export class CarImageService {
 
-  api:string = "https://localhost:44350/api/CarImages/"
+  api:string = "https://localhost:5001/api/CarImages/"
   returned:any = undefined;
 
   constructor(private httpClient:HttpClient) { }

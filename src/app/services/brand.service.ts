@@ -9,7 +9,7 @@ import { Brand } from '../models/Entity/brand';
 })
 export class BrandService {
 
-  api = "https://localhost:44350/api/Brand/";
+  api = "https://localhost:5001/api/Brand/";
 
   constructor(private httpClient:HttpClient) { }
 

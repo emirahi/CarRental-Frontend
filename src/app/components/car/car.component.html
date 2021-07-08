@@ -1,13 +1,20 @@
 <div class="row" [hidden]="isHidden">
-  <div class="col-6">
+  <div class="col-5">
     <app-brand></app-brand>
   </div>
-  <div class="col-6">
+  <div class="col-5">
     <app-color></app-color>
   </div>
-  <button type="submit" (click)="searchTheCar()" class="btn btn-success" id="search">Ara</button>
+  <div class="col-2">
+    <button type="submit" (click)="searchTheCar()" class="btn btn-success" id="search">Filtrele</button>
+  </div>
 </div>
 
+<div class="row" [hidden]="isHidden">
+  <div class="col-11">
+    <input [(ngModel)]="filterText" type="text" class="form-control mt-2 mb-2">
+  </div>
+</div>
 
 <table class="table" [hidden]="isHidden">
   <thead>
@@ -17,10 +24,11 @@
       <th scope="col">Arabanın Model Tarihi</th>
       <th scope="col">Arabının Fiyatı</th>
       <th scope="col">Arabanın Açıklaması</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let car of carsDto">
+    <tr *ngFor="let car of carsDto  | filterPipe:filterText">
       <th scope="row">{{ car.brandName }}</th>
       <th scope="row">{{ car.colorName }}</th>
       <th scope="row">{{ car.modelYear }}</th>
@@ -37,11 +45,11 @@
 <div class="row mt-3" [hidden]="!isHidden">
   <div class="col-6">
     <!-- <img src="assets/alfa-romeo-gıula1.jpg"> -->
-    <img [src]="imageUrl" alt="">
+    <img [src]="imageUrl" alt="" style="width: 100%;height: auto;">
   </div>
   <div class="col-6">
     <h2 style="text-align: center;">Araç Bilgileri</h2>
-    <div >
+    <div>
       <h4>Marka : </h4>
       <p>{{ carDetail.brandName }}</p>
       <hr>
@@ -63,6 +71,14 @@
 
     </div>
 
-
+    <div class="mt-3 mb-5">
+      <h3>Kiralanacak zaman</h3>
+      <input [(ngModel)]="startDate" type="date" class="form-control" id="startDate">
+      <h3>Teslim edilecek zaman</h3>
+      <input [(ngModel)]="endDate" type="date" class="form-control" id="endDate">
+      <button (click)="controlRentalOfCar(carDetail)" type="submit" class="btn btn-success mt-3 form-control">Kirala</button>
+    </div>
   </div>
 </div>
+
+

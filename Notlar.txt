@@ -41,3 +41,5 @@ src -> app -> services {
     }
 }
 
+
+payment componentinde kredi kartını onaylanırsa rental üzerinde bu aracı kiralanmış olucak

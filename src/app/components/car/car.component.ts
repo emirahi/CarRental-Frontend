@@ -1,4 +1,5 @@
 import { ThisReceiver } from '@angular/compiler';
+import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CarDetailDto } from 'src/app/models/Dto/carDetailDto';
@@ -6,6 +7,7 @@ import { CarDto } from 'src/app/models/Dto/cardto';
 import { Car } from 'src/app/models/Entity/car';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
+import { RentalService } from 'src/app/services/rental.service';
 import { BrandComponent } from '../brand/brand.component';
 import { ColorComponent } from '../color/color.component';
 
@@ -22,14 +24,18 @@ export class CarComponent implements OnInit {
   isHidden = false
   imageUrl:string = ""
   baseUrl:string = "https://localhost:44350/"
+  filterText = ""
+  startDate = ""
+  endDate = ""
 
   constructor(private carService: CarService, private colorComponent: ColorComponent
-    ,private brandComponent: BrandComponent,private carImageService:CarImageService
-    ,private activatedRoute:ActivatedRoute ) { }
+    ,private brandComponent: BrandComponent,private carImageService:CarImageService,
+    private rentalService:RentalService,private activatedRoute:ActivatedRoute ) { }
 
   ngOnInit(): void {
     localStorage.setItem("brand","0")
     localStorage.setItem("color","0")
+    localStorage.removeItem("carInfo")
     
     this.activatedRoute.params.subscribe(params => {
       if (params["carId"]) {
@@ -124,5 +130,33 @@ export class CarComponent implements OnInit {
     }
   }
 
+  controlRentalOfCar(car:CarDetailDto){
+    let id = car.id
+    alert(id)
+    this.rentalService.getByCarId(id).subscribe(response => {
+      if (this.startDate === "" || this.endDate === "") {
+        return
+      }
+
+      let rentDate = Date.parse(response.data.rentDate.toString().split("T")[0]);
+      let returnDate = Date.parse(response.data.returnDate.toString().split("T")[0]);
+      let startDate = Date.parse(this.startDate)
+      let endDate = Date.parse(this.endDate)
+
+      console.log("rentDate",response.data.rentDate.toString().split("T")[0]);
+      console.log("returnDate",response.data.returnDate.toString().split("T")[0]);
+      console.log("startDate",this.startDate);
+      console.log("endDate",this.endDate);
+      
+      if (startDate > returnDate && startDate > rentDate && startDate < endDate) {
+        console.log("girdi - startDate > returnDate && startDate > rentDate");
+        console.log(" rentDate",rentDate," returnDate",returnDate," startDate",startDate," endDate",endDate);
+        localStorage.setItem("carInfo",`${this.carDetail.id},1,${this.startDate},${this.endDate}`)
+        window.location.href = `/Payment/${id}`;
+      }
+    })
+    localStorage.setItem("carInfo",`${this.carDetail.id},1,${this.startDate},${this.endDate}`)
+    window.location.href = `/Payment/${id}`;
+  }
 }
 
