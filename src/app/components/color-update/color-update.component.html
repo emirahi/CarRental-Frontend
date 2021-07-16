@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 mt-3">
+        <div class="card">
+            <div class="card-header">
+                <h3 style="color:green">Bir Marka Ekleyin</h3>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="colorUpdate">
+                    <label for="color">Renk</label>
+                    <input type="text" id="color" class="form-control mt-1" formControlName="colorName">
+                </form>
+            </div>
+            <div class="card-footer">
+                <button (click)="update()" type="submit" style="width: 100%;" class="btn btn-outline-success">Ekle</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-1"></div>
+</div>

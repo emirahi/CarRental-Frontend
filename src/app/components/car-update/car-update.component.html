@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-md-3">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Marka Id</th>
+                <th scope="col">Marka</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let brand of brandList">
+                <th scope="row">{{ brand.brandId }}</th>
+                <th scope="row">{{ brand.brandName }}</th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-6 mt-3">
+        <div class="card">
+            <div class="card-header">
+                <h3 style="color:green">Bir Marka Ekleyin</h3>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="carUpdate">
+                    <div class="mb-2">
+                        <label for="brandId">Marka Id</label>
+                        <input type="text" id="brandId" class="form-control mt-1" formControlName="brandId">
+                    </div>
+                    <div class="mb-2">
+                        <label for="colorId">Renk Id</label>
+                        <input type="text" id="colorId" class="form-control mt-1" formControlName="colorId">
+                    </div>
+                    <div class="mb-2">
+                        <label for="modelYear">Model Yılı</label>
+                        <input type="text" id="modelYear" class="form-control mt-1" formControlName="modelYear">
+                    </div>
+                    <div class="mb-2">
+                        <label for="dailyPrice">Fiyatı</label>
+                        <input type="text" id="dailyPrice" class="form-control mt-1" formControlName="dailyPrice">
+                    </div>
+                    <div class="mb-2">
+                        <label for="description">Açıklaması</label>
+                        <input type="text" id="description" class="form-control mt-1" formControlName="description">
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button (click)="update()" type="submit" style="width: 100%;" class="btn btn-outline-success">Ekle</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+                
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Arabanın Markası</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let color of colorList">
+                <th scope="row">{{ color.colorId }}</th>
+                <th scope="row">{{ color.colorName }}</th>
+            </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</div>

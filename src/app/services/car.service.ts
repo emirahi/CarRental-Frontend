@@ -6,6 +6,7 @@ import { CarDto } from '../models/Dto/cardto';
 import { Car } from '../models/Entity/car';
 import { CarDetailDto } from '../models/Dto/carDetailDto';
 import { itemResponseModel } from '../models/responeModel/itemResponseModel';
+import { baseResponseModel } from '../models/responeModel/baseResponeModel';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,17 @@ export class CarService {
   getCarDetails(carId:number):Observable<itemResponseModel<CarDetailDto>> {
     let newPath = this.api + `GetCarDetails?carId=${ carId }`;
     return this.httpClient.get<itemResponseModel<CarDetailDto>>(newPath);
+  }
+
+  Add(car:Car):Observable<baseResponseModel>{
+    let newPath = this.api + "Add";
+    return this.httpClient.post<baseResponseModel>(newPath,car);
+  }
+
+  Update(car:Car):Observable<baseResponseModel>{
+    let newPath = this.api + "Update";
+    console.log(car);
+    return this.httpClient.post<baseResponseModel>(newPath,car);
   }
 }
 

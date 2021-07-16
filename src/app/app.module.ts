@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from "@angular/forms"
+import { FormsModule,ReactiveFormsModule } from "@angular/forms"
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -17,6 +17,12 @@ import { CarImageComponent } from './components/car-image/car-image.component';
 import { FilterPipePipe } from './models/pipes/filter-pipe.pipe';
 import { CardComponent } from './components/card/card.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
 
 
 @NgModule({
@@ -32,16 +38,23 @@ import { PaymentComponent } from './components/payment/payment.component';
     FilterPipePipe,
     CardComponent,
     PaymentComponent,
+    CarAddComponent,
+    ColorAddComponent,
+    BrandAddComponent,
+    BrandUpdateComponent,
+    CarUpdateComponent,
+    ColorUpdateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule, // required animations module
+    BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-left"
-    }), // ToastrModule added
+    }),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
