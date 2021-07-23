@@ -1,1 +1,79 @@
-<p>user works!</p>
+
+<div class="row">
+    <div class="col-3">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 90vh;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+              <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+              <span class="fs-4">Kullanıcı Arayüzü</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+              <li class="nav-item">
+                <a (click)="getUserInfo()" class="nav-link" aria-current="page">
+                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                  Bilgilerimi Görüntüle
+                </a>
+              </li>
+              <li>
+                <button (click)="userUpdate()" class="nav-link">
+                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                  Bilgileri Güncelle
+                </button>
+              </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-9" >
+        <form class="row g-3" [hidden]="isHidden">
+            <div class="col-md-6">
+              <h3  class="form-label">İsim</h3>
+              <input type="text" class="form-control" readonly=true value="{{ user.firstName }}">
+            </div>
+            <div class="col-md-6">
+              <h3 class="form-label">Soyisim</h3>
+              <input type="text" class="form-control" readonly=true value="{{user.lastName}}">
+            </div>
+            <div class="col-12">
+                <h3 class="form-label">Email</h3>
+                <input type="text" class="form-control" readonly=true value="{{user.email}}">
+            </div>
+          </form>
+
+          <!----------------------------------------------------------------------------------->
+
+          <form class="row g-3" [formGroup]="userForm" [hidden]="!isHidden">
+            <div class="col-md-6">
+                <h5  class="form-label">İsim</h5>
+                <input type="text" class="form-control" value="" formControlName="firstName" autocomplete="name">
+              </div>
+              <div class="col-md-6">
+                <h5 class="form-label">Soyisim</h5>
+                <input type="text" class="form-control" value="" formControlName="lastName" autocomplete="name">
+              </div>
+              <div class="col-12">
+                  <h5 class="form-label">Email</h5>
+                  <input type="text" class="form-control" value="" formControlName="email" autocomplete="email">
+            </div>
+
+            <div class="col-12">
+              <h5  class="form-label">Mevcut Şifre</h5>
+              <input type="{{typeChange}}" class="form-control" value="" formControlName="password" autocomplete="new-password">
+            </div>
+            <div class="col-6">
+              <h5 class="form-label">Yeni Şifre</h5>
+              <input type="{{typeChange}}" class="form-control" value="" formControlName="password1" autocomplete="new-password">
+            </div>
+            <div class="col-6">
+                <h5 class="form-label">Tekrar Yeni Şifre</h5>
+                <input type="{{typeChange}}" class="form-control" value="" formControlName="password1repeat" autocomplete="new-password">
+            </div>
+            <div class="col-12">
+                <button (click)="userUpdate()" type="submit" class="btn btn-success" style="width: 100%;">Şifreyi Değiştir</button>
+            </div>
+          </form>
+
+
+    </div>
+</div>
+
+
